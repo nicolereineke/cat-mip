@@ -33,7 +33,7 @@
       "actions": []
     },
     "metadata": {
-      "author": "Roop Peterson",
+      "author": "Roop Petersen",
       "source_url": "",
       "version": "2025.08.04",
       "registry": "cat-mip.org",
@@ -197,7 +197,7 @@
     ]
   },
   "metadata": {
-    "author": "Roop Peterson",
+    "author": "Roop Petersen",
     "source_url": "",
     "version": "2025.08.07",
     "registry": "cat-mip.org",
@@ -399,7 +399,7 @@
     ]
   },
   "metadata": {
-    "author": "Roop Peterson",
+    "author": "Roop Petersen",
     "source_url": "",
     "version": "2025.08.07",
     "registry": "cat-mip.org",
@@ -484,7 +484,7 @@
     ]
   },
   "metadata": {
-    "author": "Roop Peterson",
+    "author": "Roop Petersen",
     "source_url": "",
     "version": "2025.08.07",
     "registry": "cat-mip.org",
@@ -649,7 +649,7 @@
     ]
   },
   "metadata": {
-    "author": "Roop Peterson",
+    "author": "Roop Petersen",
     "source_url": "",
     "version": "2025.08.07",
     "registry": "cat-mip.org",
@@ -897,7 +897,7 @@
     ]
   },
   "metadata": {
-    "author": "Roop Peterson",
+    "author": "Roop Petersen",
     "source_url": "",
     "version": "2025.08.07",
     "registry": "cat-mip.org",
@@ -1022,7 +1022,7 @@
     ]
   },
   "metadata": {
-    "author": "Roop Peterson",
+    "author": "Roop Petersen",
     "source_url": "",
     "version": "2025.08.07",
     "registry": "cat-mip.org",
@@ -1108,7 +1108,7 @@
     ]
   },
   "metadata": {
-    "author": "Roop Peterson",
+    "author": "Roop Petersen",
     "source_url": "",
     "version": "2025.08.07",
     "registry": "cat-mip.org",
@@ -1279,7 +1279,7 @@
     ]
   },
   "metadata": {
-    "author": "Roop Peterson",
+    "author": "Roop Petersen",
     "source_url": "",
     "version": "2025.08.07",
     "registry": "cat-mip.org",
@@ -1363,7 +1363,7 @@
     ]
   },
   "metadata": {
-    "author": "Roop Peterson",
+    "author": "Roop Petersen",
     "source_url": "",
     "version": "2025.08.07",
     "registry": "cat-mip.org",
@@ -1572,7 +1572,7 @@
     ]
   },
   "metadata": {
-    "author": "Roop Peterson",
+    "author": "Roop Petersen",
     "source_url": "",
     "version": "2025.08.07",
     "registry": "cat-mip.org",
@@ -1656,7 +1656,7 @@
     ]
   },
   "metadata": {
-    "author": "Roop Peterson",
+    "author": "Roop Petersen",
     "source_url": "",
     "version": "2025.08.07",
     "registry": "cat-mip.org",
@@ -1781,7 +1781,7 @@
   },
   "recommendation": "Use Role when managing access control, permissions, or onboarding processes. For specific privileges, consider referencing the individual permission or function where appropriate.",
   "metadata": {
-    "author": "Roop Peterson",
+    "author": "Roop Petersen",
     "source_url": "",
     "version": "2025.08.07",
     "registry": "cat-mip.org",
@@ -1825,7 +1825,7 @@
   },
   "recommendation": "Use Router when referring to devices that control IP traffic flow between networks. For internal-only devices that operate at Layer 2, consider using Switch instead.",
   "metadata": {
-    "author": "Roop Peterson",
+    "author": "Roop Petersen",
     "source_url": "",
     "version": "2025.08.07",
     "registry": "cat-mip.org",
@@ -1911,7 +1911,7 @@
   },
   "recommendation": "Use Serial Number when referencing unique hardware or software identifiers for lifecycle management, compliance, or support. Always pair with context (e.g., device type or site) for clarity.",
   "metadata": {
-    "author": "Roop Peterson",
+    "author": "Roop Petersen",
     "source_url": "",
     "version": "2025.08.07",
     "registry": "cat-mip.org",
@@ -2122,7 +2122,7 @@
     ]
   },
   "metadata": {
-    "author": "Roop Peterson",
+    "author": "Roop Petersen",
     "source_url": "",
     "version": "2025.08.07",
     "registry": "cat-mip.org",
@@ -2208,7 +2208,7 @@
   },
   "recommendation": "Use SSH for secure, encrypted remote access and management of devices, especially in Linux and network equipment contexts. Ensure appropriate authentication and logging are in place.",
   "metadata": {
-    "author": "Roop Peterson",
+    "author": "Roop Petersen",
     "source_url": "",
     "version": "2025.08.07",
     "registry": "cat-mip.org",
@@ -2294,7 +2294,7 @@
   },
   "recommendation": "Use Syslog to centralize, monitor, and analyze system and device log messages. Specify filtering criteria such as device, severity, or time range for targeted queries.",
   "metadata": {
-    "author": "Roop Peterson",
+    "author": "Roop Petersen",
     "source_url": "",
     "version": "2025.08.07",
     "registry": "cat-mip.org",
@@ -2597,7 +2597,7 @@
   },
   "recommendation": "Use Version to track and manage software or configuration states. Specify the object and version context to ensure accurate actions.",
   "metadata": {
-    "author": "Roop Peterson",
+    "author": "Roop Petersen",
     "source_url": "",
     "version": "2025.08.07",
     "registry": "cat-mip.org",
@@ -2641,7 +2641,7 @@
   },
   "recommendation": "Use VMware to refer specifically to virtualization infrastructure and management. Specify hosts, VMs, or clusters for detailed queries and actions.",
   "metadata": {
-    "author": "Roop Peterson",
+    "author": "Roop Petersen",
     "source_url": "",
     "version": "2025.08.07",
     "registry": "cat-mip.org",
@@ -2767,7 +2767,7 @@
   },
   "recommendation": "Use Webhook to enable real-time event-driven integrations. Clearly define triggers, targets, and payload formats for reliable operation.",
   "metadata": {
-    "author": "Roop Peterson",
+    "author": "Roop Petersen",
     "source_url": "",
     "version": "2025.08.07",
     "registry": "cat-mip.org",
@@ -2810,7 +2810,7 @@
   },
   "recommendation": "Use WMI for Windows system management, ensuring proper permissions and network access are configured.",
   "metadata": {
-    "author": "Roop Peterson",
+    "author": "Roop Petersen",
     "source_url": "",
     "version": "2025.08.07",
     "registry": "cat-mip.org",
