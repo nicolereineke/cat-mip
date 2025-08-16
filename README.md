@@ -1,5 +1,5 @@
 # cat-mip
-Consortium for AI Terminology for MSPs &amp; IT Pros (CAT-MIP)
+Consortium for AI Terminology for MSPs & IT Pros (CAT-MIP)
 
 Mission Statement: To define a shared vocabulary for AI Agents operating across MSP and IT Pro platforms to ensure interoperability, transparency, and reliability.
 AI Agents communicate using natural language, just like we do. But in a technical environment, that introduces challenges. One user might type “device,” another might say “asset,” “endpoint,” or “laptop.” These can all mean the same thing... or not. And as these AI Agents pass instructions from one system to another, across different companies and platforms, the risk of misinterpretation increases.
@@ -15,24 +15,35 @@ Prepare our platform and our partners for a future of autonomous service deliver
 By leading the creation of this MSP and IT Pro specific terminology standard, we’re ensuring that our AI Agents, and the tools they interact with, speak the same language. It’s a foundational step toward smarter, more secure, and more efficient IT operations.
 Consortium for AI Terminology for MSPs & IT Pros (CAT-MIP)
 
-# Development Status
+## Development Status
 This project is community-driven and in the early stages of development. The goal is to define and maintain a shared vocabulary and relationship model (lightweight ontology) for AI Agents operating across MSP and IT Pro platforms.
 
 See the project overview discussion for scope, goals, and active work.
 
-# Contributing
-Discussions: Propose and refine new terminology, definitions, and relationships.
+## Documentation
 
-Issues: Track well-scoped technical or vocabulary work agreed upon by the community.
+- **[Contributing Guide](docs/CONTRIBUTING.md)** - How to add new terms and contribute to CAT-MIP
+- **[Linter Documentation](docs/LINTER.md)** - How to validate your changes
+- **[Terms Vocabulary](terms.json)** - The complete CAT-MIP terminology
 
-Pull Requests: Submit new or updated vocabulary entries, relationship mappings, or schema changes.
+## Contributing
 
-# Overview
+**Discussions**: Propose and refine new terminology, definitions, and relationships.
+
+**Issues**: Track well-scoped technical or vocabulary work agreed upon by the community.
+
+**Pull Requests**: Submit new or updated vocabulary entries, relationship mappings, or schema changes.
+
+See our [Contributing Guide](docs/CONTRIBUTING.md) for detailed instructions.
+
+## Overview
+
 The CAT-MIP Registry is a centralized repository for standardized terms, synonyms, and relationships used by AI Agents in MSP and IT Pro environments.
 It simplifies interoperability between AI Agents, systems, and tools by ensuring that prompts, instructions, and automated actions map to the same canonical meaning.
 
-# Features
-JSON CAT-MIP vocabulary entries 
+## Features
+
+JSON CAT-MIP vocabulary entries
 
 Synonyms to map multiple terms to a single canonical definition
 
@@ -44,25 +55,57 @@ Agent execution guidance for accurate action mapping
 
 Metadata for tracing and transparency
 
-# Getting Started
-# Workflow Overview
+## Getting Started
+
+### Workflow Overview
+
 Request Flow Example: "Restart all devices at the Denver client that missed patches"
 
-Technician Prompt — Natural language request.
+```mermaid
+sequenceDiagram
+    participant Tech as Technician
+    participant LLM as LLM + CAT-MIP
+    participant MCP as MCP Tool
+    participant Server as MCP Server
+    participant RMM as RMM API
+    
+    Tech->>LLM: "Restart all devices at the Denver client<br/>that missed patches"
+    Note over LLM: Maps terms using CAT-MIP:<br/>• "devices" → Asset<br/>• "client" → Tenant<br/>• "missed patches" → compliance filter
+    
+    LLM->>MCP: Tool call with canonical terms<br/>(Asset, Tenant, Compliance)
+    
+    MCP->>Server: Validate & Process
+    Note over Server: • Validates tenant scope<br/>• Injects security headers<br/>• Translates to RMM format
+    
+    Server->>RMM: API Request<br/>(vendor-specific format)
+    
+    RMM-->>Server: List of matching assets
+    
+    Server->>MCP: Process results
+    
+    MCP->>LLM: Execute restart_asset<br/>for each matched device
+    
+    LLM-->>Tech: "✓ Successfully restarted 12 devices<br/>at Denver tenant that missed patches"
+```
 
-LLM Host + CAT-MIP Mapping — Maps “devices” → Asset, “client” → Tenant, “missed patches” → compliance filter.
+**Step-by-step breakdown:**
 
-MCP Tool Call — Uses canonical CAT-MIP terms.
+1. **Technician Prompt** — Natural language request.
 
-MCP Server — Validates tenant scope, injects security headers, translates to RMM API format.
+2. **LLM Host + CAT-MIP Mapping** — Maps "devices" → Asset, "client" → Tenant, "missed patches" → compliance filter.
 
-RMM API Response — Returns list of matching assets.
+3. **MCP Tool Call** — Uses canonical CAT-MIP terms.
 
-Execute Actions — Restarts each asset using restart_asset.
+4. **MCP Server** — Validates tenant scope, injects security headers, translates to RMM API format.
 
-Success Response — Human-readable confirmation using CAT-MIP terminology.
+5. **RMM API Response** — Returns list of matching assets.
 
-# License Agreement
+6. **Execute Actions** — Restarts each asset using restart_asset.
+
+7. **Success Response** — Human-readable confirmation using CAT-MIP terminology.
+
+## License Agreement
+
 Terms and Conditions for CAT-MIP Standards
 
 Welcome to the Dictionary of Definitions (the “Dictionary”) developed and maintained by the CAT-MIP and N-able AI External Standards Committee (the “Committee”). These Terms and Conditions (“Terms”) govern your access to and use of the Dictionary, including all content, definitions, and related services provided through this community. By accessing, using, or contributing to the Dictionary, you agree to be bound by these Terms.
@@ -99,4 +142,4 @@ We reserve the right to update or modify these Terms at any time. Changes will b
 
 For questions, feedback, or permissions, please contact us at:
 
-Nicole.reineke @ n-able 
+Nicole.reineke @ n-able

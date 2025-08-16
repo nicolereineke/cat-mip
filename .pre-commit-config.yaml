@@ -1,0 +1,43 @@
+# Pre-commit hooks for CAT-MIP
+# Install with: pip install pre-commit && pre-commit install
+
+repos:
+  # JSON validation
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: check-json
+        name: Validate JSON syntax
+        files: terms\.json$
+      - id: pretty-format-json
+        name: Format JSON files
+        args: ['--autofix', '--indent=2']
+        files: terms\.json$
+      - id: check-merge-conflict
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+  
+  # Python linting for the linter itself
+  - repo: https://github.com/psf/black
+    rev: 23.12.1
+    hooks:
+      - id: black
+        files: \.py$
+  
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.1.9
+    hooks:
+      - id: ruff
+        files: \.py$
+  
+  # Custom CAT-MIP linter
+  - repo: local
+    hooks:
+      - id: catmip-lint
+        name: CAT-MIP Terms Linter
+        entry: python lint_catmip.py
+        language: system
+        files: terms\.json$
+        pass_filenames: true
+        always_run: true
+        verbose: true

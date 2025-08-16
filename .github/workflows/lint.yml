@@ -1,0 +1,202 @@
+name: Lint CAT-MIP Terms
+
+on:
+  push:
+    branches: [ main, cam-dev, develop ]
+    paths:
+      - 'terms.json'
+      - 'lint_catmip.py'
+      - '.github/workflows/lint.yml'
+      - 'pyproject.toml'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'terms.json'
+      - 'lint_catmip.py'
+      - '.github/workflows/lint.yml'
+      - 'pyproject.toml'
+  workflow_dispatch:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Install uv
+      uses: astral-sh/setup-uv@v3
+      with:
+        enable-cache: true
+        cache-dependency-glob: "pyproject.toml"
+    
+    - name: Set up Python with uv
+      run: |
+        uv python install 3.11
+        uv python pin 3.11
+    
+    - name: Install dependencies
+      run: |
+        uv sync --no-dev
+    
+    - name: Validate JSON syntax
+      run: |
+        echo "Validating JSON syntax..."
+        uv run python -m json.tool terms.json > /dev/null
+        if [ $? -eq 0 ]; then
+          echo "✅ JSON syntax is valid"
+        else
+          echo "❌ JSON syntax validation failed"
+          exit 1
+        fi
+    
+    - name: Run CAT-MIP Linter
+      run: |
+        echo "Running CAT-MIP linter..."
+        uv run python lint_catmip.py terms.json --stats
+    
+    - name: Generate linter report
+      if: always()
+      run: |
+        uv run python lint_catmip.py terms.json --json > linter-report.json || true
+        
+        # Extract key metrics
+        if [ -f linter-report.json ]; then
+          echo "## Linter Report Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Parse JSON and create summary
+          python -c "
+import json
+with open('linter-report.json') as f:
+    data = json.load(f)
+    print(f'- **Status**: {\"✅ Passed\" if data[\"success\"] else \"❌ Failed\"}')
+    print(f'- **Errors**: {len(data[\"errors\"])}')
+    print(f'- **Warnings**: {len(data[\"warnings\"])}')
+    if 'stats' in data and data['stats']:
+        print(f'- **Total Terms**: {data[\"stats\"].get(\"total_terms\", 0)}')
+        print(f'- **Terms with Examples**: {data[\"stats\"].get(\"terms_with_examples\", 0)}')
+        print(f'- **Terms with Relationships**: {data[\"stats\"].get(\"terms_with_relationships\", 0)}')
+          " >> $GITHUB_STEP_SUMMARY
+        fi
+    
+    - name: Upload linter report
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: linter-report
+        path: linter-report.json
+        retention-days: 30
+    
+    - name: Comment PR with results
+      if: github.event_name == 'pull_request' && always()
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const fs = require('fs');
+          
+          let report;
+          try {
+            const reportContent = fs.readFileSync('linter-report.json', 'utf8');
+            report = JSON.parse(reportContent);
+          } catch (e) {
+            console.log('Could not read linter report');
+            return;
+          }
+          
+          const success = report.success;
+          const errors = report.errors || [];
+          const warnings = report.warnings || [];
+          
+          let comment = '## 🔍 CAT-MIP Linter Results\n\n';
+          
+          if (success) {
+            comment += '✅ **All checks passed!**\n\n';
+          } else {
+            comment += '❌ **Validation failed - please fix errors before merging**\n\n';
+          }
+          
+          if (errors.length > 0) {
+            comment += `### Errors (${errors.length})\n`;
+            errors.slice(0, 10).forEach(error => {
+              comment += `- ${error}\n`;
+            });
+            if (errors.length > 10) {
+              comment += `\n_...and ${errors.length - 10} more errors_\n`;
+            }
+            comment += '\n';
+          }
+          
+          if (warnings.length > 0) {
+            comment += `### Warnings (${warnings.length})\n`;
+            warnings.slice(0, 5).forEach(warning => {
+              comment += `- ${warning}\n`;
+            });
+            if (warnings.length > 5) {
+              comment += `\n_...and ${warnings.length - 5} more warnings_\n`;
+            }
+            comment += '\n';
+          }
+          
+          if (report.stats) {
+            comment += '### Statistics\n';
+            comment += `- Total Terms: ${report.stats.total_terms || 0}\n`;
+            comment += `- Terms with Synonyms: ${report.stats.terms_with_synonyms || 0}\n`;
+            comment += `- Terms with Examples: ${report.stats.terms_with_examples || 0}\n`;
+          }
+          
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: comment
+          });
+
+  check-duplicates:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Install uv
+      uses: astral-sh/setup-uv@v3
+      with:
+        enable-cache: true
+        cache-dependency-glob: "pyproject.toml"
+    
+    - name: Set up Python with uv
+      run: |
+        uv python install 3.11
+        uv python pin 3.11
+    
+    - name: Check for duplicate terms
+      run: |
+        echo "Checking for duplicate canonical terms..."
+        uv run python -c "
+import json
+import sys
+
+with open('terms.json') as f:
+    terms = json.load(f)
+    
+canonical_terms = {}
+duplicates = []
+
+for idx, term in enumerate(terms):
+    if 'canonical_term' in term:
+        ct = term['canonical_term']
+        if ct in canonical_terms:
+            duplicates.append(f'{ct} (indices {canonical_terms[ct]} and {idx})')
+        else:
+            canonical_terms[ct] = idx
+
+if duplicates:
+    print('❌ Found duplicate canonical terms:')
+    for dup in duplicates:
+        print(f'  - {dup}')
+    sys.exit(1)
+else:
+    print(f'✅ No duplicates found among {len(canonical_terms)} canonical terms')
+        "
