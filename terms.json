@@ -2926,4 +2926,475 @@
     "registry": "cat-mip.org",
     "term_type": ""
   }
+},
+{
+  "id": "CAT-MIP-08192025-000000011",
+  "canonical_term": "Active User",
+  "definition": "An Active User is a user account that has recently authenticated, initiated a session, performed actions, or otherwise engaged with a system, service, or platform within a defined timeframe. The term is used to distinguish between currently engaged or recently engaged users and those that are inactive, suspended, or dormant. In MSP and IT environments, active users are tracked for licensing, security auditing, capacity planning, and automation targeting.",
+  "synonyms": [
+    "Logged-In User",
+    "Authenticated User",
+    "Current User",
+    "Engaged User",
+    "Active Account"
+  ],
+  "relationships": [
+    "Active User isAuthenticatedBy Directory or Identity Provider",
+    "Active User interactsWith Application, Service, or Device",
+    "Active User isTrackedIn Session Log, Audit Log, or Usage Report",
+    "Active User mayBeAssignedTo Role, Policy, or License",
+    "Active User contributesTo Usage Metrics or Billing"
+  ],
+  "prompt_examples": [
+    "List all active users across all client tenants in the past 7 days.",
+    "Trigger a password reset workflow for all active users with elevated privileges.",
+    "Which active users accessed the backup management console yesterday?",
+    "Export a report of all active users by site and department."
+  ],
+  "agent_execution": {
+    "interpretation": "When a prompt refers to an “Active User,” the AI agent will:",
+    "actions": [
+      "Query the user directory, session logs, or activity metrics to identify accounts meeting the active criteria",
+      "Apply filters such as time range, role, location, or group",
+      "Correlate activity with licensing, authentication, or policy enforcement data",
+      "Return the list of matching users or perform the requested action on their behalf",
+      "Log all queries and actions for auditing or compliance purposes"
+    ]
+  },
+  "metadata": {
+    "author": "Roop Petersen",
+    "source_url": "",
+    "version": "1.0",
+    "date_added": "2025-08-19T00:00:00Z",
+    "registry": "cat-mip.org",
+    "term_type": ""
+  }
+},
+{
+  "id": "CAT-MIP-08192025-000000021",
+  "canonical_term": "ARR",
+  "definition": "ARR (Annual Recurring Revenue) is the total value of recurring revenue from subscriptions or service contracts normalized over a one-year period. It represents the predictable income that an MSP or SaaS business expects to receive annually from active customers. ARR is a key metric for evaluating long-term growth, customer retention, and business valuation.",
+  "synonyms": [
+    "Annual Revenue",
+    "Recurring Annual Revenue",
+    "Subscription ARR",
+    "Contracted Revenue (annualized)"
+  ],
+  "relationships": [
+    "ARR isDerivedFrom MRR, multipliedBy 12",
+    "ARR isTiedTo Subscriber, Contract, or Service Plan",
+    "ARR isTrackedIn Financial System or CRM",
+    "ARR isImpactedBy Renewals, Upgrades, or Churn",
+    "ARR isReportedIn KPIs or Growth Dashboards"
+  ],
+  "prompt_examples": [
+    "What is the current ARR across all managed security services?",
+    "Compare ARR by client tier and contract length.",
+    "How has ARR changed year-over-year for the healthcare vertical?",
+    "Generate an ARR forecast based on current MRR and pipeline data."
+  ],
+  "agent_execution": {
+    "interpretation": "When a prompt refers to “ARR,” the AI agent will:",
+    "actions": [
+      "Retrieve MRR and related subscription data to calculate ARR",
+      "Segment ARR by service, customer, or region if specified",
+      "Identify factors influencing ARR growth or decline, such as churn or expansion",
+      "Generate reports, dashboards, or financial summaries for strategic planning",
+      "Log ARR calculations and forecasting activities for auditing or executive review"
+    ]
+  },
+  "metadata": {
+    "author": "Roop Petersen",
+    "source_url": "",
+    "version": "1.0",
+    "date_added": "2025-08-19T00:00:00Z",
+    "registry": "cat-mip.org",
+    "term_type": ""
+  }
+},
+{
+  "id": "CAT-MIP-08192025-000000031",
+  "canonical_term": "Browser",
+  "definition": "A Browser is a client application used to access and interact with content and services on the World Wide Web. It renders web pages, processes scripts, and facilitates communication with remote servers using protocols such as HTTPS. In MSP and IT environments, browsers are used to access web-based portals, dashboards, APIs, and SaaS platforms. They may also be managed through policies for security, compliance, and performance.",
+  "synonyms": [
+    "Web Browser",
+    "Internet Browser",
+    "Client Browser",
+    "GUI Browser",
+    "Desktop Browser"
+  ],
+  "relationships": [
+    "Browser accesses Web Page, Portal, or API",
+    "Browser runs on Endpoint, Workstation, or Virtual Desktop",
+    "Browser isControlledBy Policy, Extension, or Configuration",
+    "Browser isMonitoredFor Usage, Version, or Threats",
+    "Browser mayBeIsolatedBy Remote Browser or Sandbox"
+  ],
+  "prompt_examples": [
+    "Ensure all browsers in the environment are running the latest secure version.",
+    "Restrict browser access to approved domains only for student users.",
+    "Report which browsers are used most frequently across all managed endpoints.",
+    "Deploy the web security extension to all Chrome browsers."
+  ],
+  "agent_execution": {
+    "interpretation": "When a prompt refers to a “Browser,” the AI agent will:",
+    "actions": [
+      "Identify installed browser applications on the target endpoint or environment",
+      "Retrieve version, configuration, and extension data for compliance and security",
+      "Apply browser-related policies or updates as needed",
+      "Monitor for unsafe browsing activity, outdated versions, or non-compliant settings",
+      "Log browser-related actions or events for auditing and reporting"
+    ]
+  },
+  "metadata": {
+    "author": "Roop Petersen",
+    "source_url": "",
+    "version": "1.0",
+    "date_added": "2025-08-19T00:00:00Z",
+    "registry": "cat-mip.org",
+    "term_type": ""
+  }
+},
+{
+  "id": "CAT-MIP-08192025-000000041",
+  "canonical_term": "Incident",
+  "definition": "An Incident is an unplanned event or disruption that affects the normal operation of a service, system, or asset and requires investigation, response, or resolution. Incidents can range from device failures and service outages to security breaches or policy violations. In MSP and IT environments, incidents are tracked through ticketing systems and are often subject to escalation paths, service-level agreements (SLAs), and post-resolution analysis.",
+  "synonyms": [
+    "Issue",
+    "Disruption",
+    "Event (context-specific)",
+    "Outage",
+    "Security Incident"
+  ],
+  "relationships": [
+    "Incident isReportedBy User, Agent, or Monitoring Tool",
+    "Incident isTrackedIn Ticketing System or Incident Queue",
+    "Incident isAssignedTo Technician, Team, or AI Agent",
+    "Incident isLinkedTo Alert, Asset, or Service",
+    "Incident mayTrigger Workflow, Notification, or Escalation"
+  ],
+  "prompt_examples": [
+    "List all open incidents affecting the backup infrastructure.",
+    "Escalate critical incidents that remain unresolved after 2 hours.",
+    "Which incidents were triggered by failed patch deployments?",
+    "Generate a monthly report of all incidents by site and root cause."
+  ],
+  "agent_execution": {
+    "interpretation": "When a prompt refers to an “Incident,” the AI agent will:",
+    "actions": [
+      "Search the incident management system for relevant records based on status, severity, or source",
+      "Retrieve and summarize incident details including timestamps, affected assets, and resolution steps",
+      "Initiate workflows such as assignment, escalation, or notification based on defined rules",
+      "Update the incident record with actions taken or insights generated",
+      "Log all interactions and changes for auditing and service reporting"
+    ]
+  },
+  "metadata": {
+    "author": "Roop Petersen",
+    "source_url": "",
+    "version": "1.0",
+    "date_added": "2025-08-19T00:00:00Z",
+    "registry": "cat-mip.org",
+    "term_type": ""
+  }
+},
+{
+  "id": "CAT-MIP-08192025-000000051",
+  "canonical_term": "MRR",
+  "definition": "MRR (Monthly Recurring Revenue) is the predictable, recurring portion of revenue generated from active subscriptions or service contracts on a monthly basis. It reflects the value of ongoing client relationships and is commonly used to track growth, retention, and financial health in MSP and SaaS business models.",
+  "synonyms": [
+    "Monthly Revenue",
+    "Recurring Revenue",
+    "Subscription Revenue",
+    "Contracted Monthly Revenue"
+  ],
+  "relationships": [
+    "MRR isGeneratedBy Subscriber or Customer",
+    "MRR isTiedTo Service Plan, Contract, or License",
+    "MRR isTrackedIn Billing System or CRM",
+    "MRR isAffectedBy Upgrades, Cancellations, or Discounts",
+    "MRR isReportedIn Financial Dashboards or KPIs"
+  ],
+  "prompt_examples": [
+    "What is the total MRR for managed backup services this month?",
+    "List all clients contributing more than $1,000 in MRR.",
+    "How did MRR change after the quarterly contract renewals?",
+    "Break down MRR by service type and client tier."
+  ],
+  "agent_execution": {
+    "interpretation": "When a prompt refers to “MRR,” the AI agent will:",
+    "actions": [
+      "Retrieve current and historical MRR data from billing or subscription systems",
+      "Segment MRR by client, service, or plan for analysis or reporting",
+      "Identify changes in MRR due to churn, expansion, or pricing adjustments",
+      "Generate dashboards, alerts, or forecasts based on MRR trends",
+      "Log financial metrics and reporting actions for auditing and business review"
+    ]
+  },
+  "metadata": {
+    "author": "Roop Petersen",
+    "source_url": "",
+    "version": "1.0",
+    "date_added": "2025-08-19T00:00:00Z",
+    "registry": "cat-mip.org",
+    "term_type": ""
+  }
+},
+{
+  "id": "CAT-MIP-08192025-000000061",
+  "canonical_term": "PII",
+  "definition": "PII (Personally Identifiable Information) refers to any data that can be used to identify an individual, either on its own or when combined with other information. This includes names, email addresses, phone numbers, government IDs, financial data, and biometric records. In MSP and IT environments, PII must be handled with strict security and compliance controls to meet privacy regulations such as GDPR, HIPAA, or CCPA.",
+  "synonyms": [
+    "Personally Identifiable Information",
+    "Personal Data",
+    "Sensitive Information",
+    "Identity Data",
+    "Confidential Customer Info"
+  ],
+  "relationships": [
+    "PII isStoredIn Database, CRM, or File System",
+    "PII isProtectedBy Encryption, Access Control, or DLP Policy",
+    "PII isSubjectTo Compliance Regulation or Data Policy",
+    "PII mayBeAccessedBy User, Technician, or External System",
+    "PII isMonitoredFor Breach, Misuse, or Unauthorized Access"
+  ],
+  "prompt_examples": [
+    "Scan file shares for unencrypted PII such as SSNs and credit card numbers.",
+    "Which backup sets contain customer PII subject to GDPR?",
+    "Apply DLP policies to restrict email transmission of PII.",
+    "Report all access to PII records in the past 30 days."
+  ],
+  "agent_execution": {
+    "interpretation": "When a prompt refers to “PII,” the AI agent will:",
+    "actions": [
+      "Locate data sources likely to contain PII based on content types or metadata",
+      "Identify and classify PII using pattern recognition, tags, or predefined rules",
+      "Evaluate whether storage, access, and transmission comply with security and privacy policies",
+      "Trigger alerts or remediation workflows in the event of unauthorized access or exposure",
+      "Log all actions involving PII discovery, access, or handling for audit and compliance tracking"
+    ]
+  },
+  "metadata": {
+    "author": "Roop Petersen",
+    "source_url": "",
+    "version": "1.0",
+    "date_added": "2025-08-19T00:00:00Z",
+    "registry": "cat-mip.org",
+    "term_type": ""
+  }
+},
+{
+  "id": "CAT-MIP-08192025-000000071",
+  "canonical_term": "Policy",
+  "definition": "A Policy is a defined set of rules or configurations that govern how systems, devices, users, or services should behave or be managed within an environment. Policies enforce standards related to security, compliance, automation, performance, and access. In MSP and IT operations, policies are applied to endpoints, users, or sites to ensure consistent behavior, streamline operations, and meet organizational or regulatory requirements.",
+  "synonyms": [
+    "Configuration Policy",
+    "Management Policy",
+    "Enforcement Rule",
+    "System Policy",
+    "Access Policy"
+  ],
+  "relationships": [
+    "Policy isAppliedTo Device, User, Group, or Site",
+    "Policy isCreatedBy Admin, Technician, or AI Agent",
+    "Policy defines Rules, Settings, or Thresholds",
+    "Policy isMonitoredFor Compliance or Violations",
+    "Policy mayTrigger Alert, Action, or Workflow"
+  ],
+  "prompt_examples": [
+    "Apply the antivirus policy to all unmanaged Windows devices.",
+    "Which policies are currently assigned to the HR department endpoints?",
+    "Create a new patching policy with a 72-hour compliance window.",
+    "Alert if a device deviates from the baseline security policy."
+  ],
+  "agent_execution": {
+    "interpretation": "When a prompt refers to a “Policy,” the AI agent will:",
+    "actions": [
+      "Retrieve the policy definition and scope, including affected objects and configuration details",
+      "Validate the policy’s applicability to the specified targets",
+      "Apply the policy settings or rules to the defined devices, users, or services",
+      "Monitor for compliance and trigger alerts or remediation if deviations occur",
+      "Log all policy applications, changes, and exceptions for auditing and reporting"
+    ]
+  },
+  "metadata": {
+    "author": "Roop Petersen",
+    "source_url": "",
+    "version": "1.0",
+    "date_added": "2025-08-19T00:00:00Z",
+    "registry": "cat-mip.org",
+    "term_type": ""
+  }
+},
+{
+  "id": "CAT-MIP-08192025-000000081",
+  "canonical_term": "Shadow IT",
+  "definition": "Shadow IT refers to the use of software, hardware, cloud services, or other technology solutions within an organization without formal approval, visibility, or oversight from the IT department. This includes unmanaged SaaS tools, personal devices, and unauthorized data storage or sharing platforms. In MSP and IT environments, shadow IT poses risks related to security, compliance, data loss, and operational inefficiencies.",
+  "synonyms": [
+    "Unmanaged IT",
+    "Rogue IT",
+    "Unsanctioned Technology",
+    "Unauthorized App Usage",
+    "BYO Tools"
+  ],
+  "relationships": [
+    "Shadow IT isUsedBy End User or Department",
+    "Shadow IT bypasses IT Policy or Approval Workflow",
+    "Shadow IT mayExpose PII or Sensitive Data",
+    "Shadow IT isDetectedBy Monitoring Tool or AI Agent",
+    "Shadow IT isReportedIn Risk Assessment or Compliance Audit"
+  ],
+  "prompt_examples": [
+    "Identify all SaaS applications in use that are not approved by IT.",
+    "Alert when new devices connect to the network without registration.",
+    "Generate a report on potential shadow IT usage by department.",
+    "What shadow IT risks were flagged during the last endpoint scan?"
+  ],
+  "agent_execution": {
+    "interpretation": "When a prompt refers to “Shadow IT,” the AI agent will:",
+    "actions": [
+      "Monitor network, device, and usage data to detect unauthorized tools or services",
+      "Compare discovered assets against approved technology inventories or whitelists",
+      "Classify shadow IT by risk level, user group, and type of service",
+      "Trigger alerts, initiate risk remediation workflows, or generate compliance reports",
+      "Log all detections and actions related to shadow IT for auditing and review"
+    ]
+  },
+  "metadata": {
+    "author": "Roop Petersen",
+    "source_url": "",
+    "version": "1.0",
+    "date_added": "2025-08-19T00:00:00Z",
+    "registry": "cat-mip.org",
+    "term_type": ""
+  }
+},
+{
+  "id": "CAT-MIP-08192025-000000091",
+  "canonical_term": "SSO",
+  "definition": "SSO (Single Sign-On) is an authentication mechanism that allows users to access multiple systems or applications with a single set of login credentials. It streamlines user access while reducing password fatigue and improving security through centralized identity management. In MSP and IT environments, SSO is often integrated with identity providers (IdPs) such as Azure AD, Okta, or Google Workspace to control access across cloud and on-premises services.",
+  "synonyms": [
+    "Single Sign-On",
+    "Federated Login",
+    "Unified Login",
+    "Centralized Authentication",
+    "Identity Federation"
+  ],
+  "relationships": [
+    "SSO isEnabledBy Identity Provider (IdP)",
+    "SSO isUsedBy User or Technician",
+    "SSO providesAccessTo Application, Portal, or Service",
+    "SSO isGovernedBy Authentication Policy or Role",
+    "SSO mayBeIntegratedWith MFA or Directory Service"
+  ],
+  "prompt_examples": [
+    "Enable SSO for all technicians using Azure AD.",
+    "List applications configured to support SSO for this client.",
+    "Report failed SSO login attempts in the past 24 hours.",
+    "Is SSO enforced for access to the backup management console?"
+  ],
+  "agent_execution": {
+    "interpretation": "When a prompt refers to “SSO,” the AI agent will:",
+    "actions": [
+      "Retrieve SSO configuration details for the relevant identity provider and service",
+      "Validate user identity and access permissions through the SSO process",
+      "Log successful or failed login attempts for auditing and security monitoring",
+      "Trigger conditional access workflows based on role, location, or device compliance",
+      "Report on SSO usage, errors, and integration status across environments"
+    ]
+  },
+  "metadata": {
+    "author": "Roop Petersen",
+    "source_url": "",
+    "version": "1.0",
+    "date_added": "2025-08-19T00:00:00Z",
+    "registry": "cat-mip.org",
+    "term_type": ""
+  }
+},
+{
+  "id": "CAT-MIP-08192025-000000101",
+  "canonical_term": "Subscriber",
+  "definition": "A Subscriber is an entity — typically a user, client, tenant, or system — that is actively enrolled in or assigned to a service, product, or data stream. Subscribers receive notifications, updates, access, or resources according to their subscription level or role. In MSP and IT environments, subscribers are often associated with licensing, usage metrics, automation triggers, or event-driven integrations.",
+  "synonyms": [
+    "Client",
+    "Tenant",
+    "Recipient",
+    "Consumer",
+    "Enrolled User"
+  ],
+  "relationships": [
+    "Subscriber isAssignedTo Service, Plan, or Policy",
+    "Subscriber isTrackedIn CRM, Directory, or Subscription System",
+    "Subscriber mayReceive Notification, Report, or Update",
+    "Subscriber mayBeBoundTo SLA, License, or Billing Agreement",
+    "Subscriber interactsWith Portal, Agent, or API"
+  ],
+  "prompt_examples": [
+    "List all active subscribers to the endpoint monitoring service.",
+    "Send system health reports to all Gold-level subscribers.",
+    "Which subscribers are over their cloud storage limit?",
+    "Deactivate subscribers with expired licenses."
+  ],
+  "agent_execution": {
+    "interpretation": "When a prompt refers to a “Subscriber,” the AI agent will:",
+    "actions": [
+      "Identify the subscriber entity and retrieve associated metadata such as service tier, contact info, and usage status",
+      "Determine eligibility or compliance based on policies, thresholds, or entitlements",
+      "Perform requested actions such as notifications, provisioning, suspension, or escalation",
+      "Update subscriber records and log activity for auditing or billing purposes"
+    ]
+  },
+  "metadata": {
+    "author": "Roop Petersen",
+    "source_url": "",
+    "version": "1.0",
+    "date_added": "2025-08-19T00:00:00Z",
+    "registry": "cat-mip.org",
+    "term_type": ""
+  }
+},
+{
+  "id": "CAT-MIP-08192025-000000111",
+  "canonical_term": "User",
+  "definition": "A User is an individual or system identity that interacts with IT services, applications, or infrastructure. Each user is typically associated with a unique account and may be assigned roles, permissions, policies, or resources. In MSP and IT environments, users are managed through identity systems, directory services, or RMM platforms to control access, monitor activity, and enforce security.",
+  "synonyms": [
+    "End User",
+    "Account Holder",
+    "Identity",
+    "Login Account",
+    "Operator"
+  ],
+  "relationships": [
+    "User isAuthenticatedBy Identity Provider or Directory",
+    "User isAssignedTo Role, Group, or Policy",
+    "User interactsWith Device, Application, or Portal",
+    "User isMonitoredFor Activity, Access, or Compliance",
+    "User mayBeLinkedTo License, Ticket, or Alert"
+  ],
+  "prompt_examples": [
+    "List all users with administrator privileges in the RMM platform.",
+    "Deactivate users who have been inactive for more than 90 days.",
+    "What devices are currently assigned to user jsmith@clientdomain.com?",
+    "Apply MFA policy to all remote users in the finance department."
+  ],
+  "agent_execution": {
+    "interpretation": "When a prompt refers to a “User,” the AI agent will:",
+    "actions": [
+      "Retrieve the user account and associated metadata from the relevant directory or system",
+      "Determine the user’s roles, group memberships, permissions, and recent activity",
+      "Perform actions such as enabling, disabling, updating, or notifying the user",
+      "Enforce policies related to access, compliance, or security",
+      "Log all user-related actions for audit, reporting, or troubleshooting"
+    ]
+  },
+  "metadata": {
+    "author": "Roop Petersen",
+    "source_url": "",
+    "version": "1.0",
+    "date_added": "2025-08-19T00:00:00Z",
+    "registry": "cat-mip.org",
+    "term_type": ""
+  }
 }
+]
