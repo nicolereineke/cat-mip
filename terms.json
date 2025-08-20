@@ -2928,7 +2928,7 @@
   }
 },
 {
-  "id": "CAT-MIP-08192025-000000011",
+  "id": "CAT-MIP-08192025-000000012",
   "canonical_term": "Active User",
   "definition": "An Active User is a user account that has recently authenticated, initiated a session, performed actions, or otherwise engaged with a system, service, or platform within a defined timeframe. The term is used to distinguish between currently engaged or recently engaged users and those that are inactive, suspended, or dormant. In MSP and IT environments, active users are tracked for licensing, security auditing, capacity planning, and automation targeting.",
   "synonyms": [
