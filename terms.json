@@ -44,7 +44,7 @@
  {
   "id": "CAT-MIP-08072025-000000011",
   "canonical_term": "Account",
-  "definition": "The term Account is discouraged due to its ambiguity. It can refer to multiple different roles in the N-able ecosystem, including: a Tenant (a customer managed by an MSP), an MSP (a partner of N-able), a Distributor Customer (a client of a distributor), or a Billing Entity (used in financial systems). Because of this ambiguity, using 'Account' in prompts or documentation can cause confusion or incorrect agent actions.",
+  "definition": "The term Account is discouraged due to its ambiguity. It can refer to multiple different roles in the ecosystem, including: a Tenant (a customer managed by an MSP), an MSP (a partner), a Distributor Customer (a client of a distributor), or a Billing Entity (used in financial systems). Because of this ambiguity, using 'Account' in prompts or documentation can cause confusion or incorrect agent actions.",
   "synonyms": [
     "Account (ambiguous – avoid)",
     "Client (ambiguous – avoid unless scoped)",
@@ -52,17 +52,13 @@
   ],
   "relationships": [
     "Tenant belongsTo MSP",
-    "MSP isPartnerOf N-able",
     "Customer isManagedBy Distributor",
     "BillingEntity paysFor Subscription"
   ],
   "prompt_examples": [
-    "INCORRECT: Get a list of all accounts with over 100 devices.",
-    "CORRECT: Get a list of all tenants with over 100 devices.",
-    "INCORRECT: Which accounts are overdue on patch compliance?",
-    "CORRECT: Which MSPs or tenants are overdue on patch compliance?",
-    "INCORRECT: Send onboarding materials to new accounts.",
-    "CORRECT: Send onboarding materials to new MSPs and distributors."
+    "Get a list of all tenants with over 100 devices.",
+    "Which MSPs or tenants are overdue on patch compliance?",
+    "Send onboarding materials to new MSPs and distributors."
   ],
   "agent_execution": {
     "interpretation": "When 'Account' is used in a prompt, the AI agent will:",
@@ -85,7 +81,7 @@
  {
   "id": "CAT-MIP-08072025-000000021",
   "canonical_term": "Agent",
-  "definition": "An Agent is a lightweight software component installed on a managed Device (Asset) that enables remote monitoring, management, automation, and communication with N-able or integrated systems. Agents collect telemetry, enforce policies, run scripts, initiate backups, and trigger alerts based on configured logic. In the MSP context, agents are essential for endpoint visibility, proactive issue resolution, and executing AI-assisted or automated workflows.",
+  "definition": "An Agent is a lightweight software component installed on a managed Device (Asset) that enables remote monitoring, management, automation, and communication with company or integrated systems. Agents collect telemetry, enforce policies, run scripts, initiate backups, and trigger alerts based on configured logic. In the MSP context, agents are essential for endpoint visibility, proactive issue resolution, and executing AI-assisted or automated workflows.",
   "synonyms": [
     "Monitoring Agent",
     "Management Agent",
@@ -126,7 +122,7 @@
 {
   "id": "CAT-MIP-08072025-000000031",
   "canonical_term": "AI Agent",
-  "definition": "An AI Agent is a software-based autonomous entity that interprets natural language prompts and executes multistep reasoning and actions using defined tools, APIs, and structured knowledge. AI Agents in the N-able context interact with the platform, devices, users, and other systems to perform tasks such as triage, reporting, automation, or decision support. AI Agents can chain tools, call scripts, and escalate issues, often acting on behalf of a technician or service provider.",
+  "definition": "An AI Agent is a software-based autonomous entity that interprets natural language prompts and executes multistep reasoning and actions using defined tools, APIs, and structured knowledge. AI Agents interact with the platform, devices, users, and other systems to perform tasks such as triage, reporting, automation, or decision support. AI Agents can chain tools, call scripts, and escalate issues, often acting on behalf of a technician or service provider.",
   "synonyms": [
     "Intelligent Agent",
     "Proactive Assistant",
@@ -293,7 +289,7 @@
 {
   "id": "CAT-MIP-08072025-000000071",
   "canonical_term": "Backup",
-  "definition": "A Backup is a secure, stored copy of data, system configuration, or application state, used to restore functionality or recover from data loss, corruption, or disaster. In the MSP and N-able context, backups may be scheduled, continuous, or event-triggered, and can target endpoints, servers, cloud services (e.g., Microsoft 365), or databases. Backup policies define the scope, frequency, retention, and storage destination of backup operations.",
+  "definition": "A Backup is a secure, stored copy of data, system configuration, or application state, used to restore functionality or recover from data loss, corruption, or disaster. In the MSP context, backups may be scheduled, continuous, or event-triggered, and can target endpoints, servers, cloud services (e.g., Microsoft 365), or databases. Backup policies define the scope, frequency, retention, and storage destination of backup operations.",
   "synonyms": [
     "Data Backup",
     "System Image (if referring to full-machine backup)",
@@ -420,9 +416,9 @@
  {
   "id": "CAT-MIP-08072025-000000101",
   "canonical_term": "Cloud",
-  "definition": "Cloud refers to infrastructure, platforms, or services hosted in a remote, internet-accessible environment rather than on-premises. In the N-able context, 'Cloud' is typically used to describe: N-able’s own cloud-native products (e.g., Cove, Cloud Commander, NC Hosted); third-party integrations with public cloud providers (e.g., AWS, Azure, GCP); and the hosting location or operational model for managed assets, policies, or storage. Because the term is broad, it should be accompanied by a qualifier (e.g., Cloud Backup, Cloud Integration, Cloud Device) to ensure clarity.",
+  "definition": "Cloud refers to infrastructure, platforms, or services hosted in a remote, internet-accessible environment rather than on-premises. 'Cloud' is typically used to describe: cloud-native products (e.g., Cove, Cloud Commander); third-party integrations with public cloud providers (e.g., AWS, Azure, GCP); and the hosting location or operational model for managed assets, policies, or storage. Because the term is broad, it should be accompanied by a qualifier (e.g., Cloud Backup, Cloud Integration, Cloud Device) to ensure clarity.",
   "synonyms": [
-    "SaaS Platform (when referring to N-able-hosted tools)",
+    "SaaS Platform (when referring to hosted tools)",
     "Hosted Environment",
     "Public Cloud (AWS, Azure, etc.)",
     "Cloud Service Provider (CSP)"
@@ -430,17 +426,15 @@
   "relationships": [
     "Cloud hosts Service or Product",
     "Cloud contains Asset or Instance",
-    "Cloud isIntegratedWith N-able or ExternalVendor",
+    "Cloud isIntegratedWith ExternalVendor",
     "Cloud provides Storage or Compute",
     "Cloud runs Automation or ScheduledTask",
     "Cloud isAccessedBy Agent or User"
   ],
   "prompt_examples": [
-    "INCORRECT: Is this customer in the cloud?",
-    "CORRECT: Is this customer using N-able Cove Cloud Backup?",
-    "INCORRECT: Scan all cloud resources for vulnerabilities.",
-    "CORRECT: Scan all Azure-hosted virtual machines for vulnerabilities.",
-    "CORRECT: List all devices managed through Cloud User Hub that belong to tenant ‘BlueSteel LLC’."
+    "Is this customer using cloud backup?",
+    "Scan all Azure-hosted virtual machines for vulnerabilities.",
+    "List all devices managed through Cloud User Hub that belong to tenant ‘BlueSteel LLC’."
   ],
   "agent_execution": {
     "interpretation": "When a prompt includes “Cloud,” the AI agent will:",
@@ -506,25 +500,23 @@
  {
   "id": "CAT-MIP-08072025-000000121",
   "canonical_term": "Data",
-  "definition": "(Use with specificity—prefer concrete terms like Log, Metric, Event, or Configuration when possible) Data refers to any structured or unstructured information collected, stored, or generated by N-able systems and integrated tools. This includes telemetry, logs, metrics, configuration records, alerts, ticket history, and external feeds. While “Data” is technically accurate, it is too broad for effective agent interaction. Prompts should specify the type of data required to ensure accurate retrieval or action.",
+  "definition": "(Use with specificity—prefer concrete terms like Log, Metric, Event, or Configuration when possible) Data refers to any structured or unstructured information collected, stored, or generated by vendor systems and integrated tools. This includes telemetry, logs, metrics, configuration records, alerts, ticket history, and external feeds. While “Data” is technically accurate, it is too broad for effective agent interaction. Prompts should specify the type of data required to ensure accurate retrieval or action.",
   "synonyms": [
     "Information (too vague – avoid)",
     "Output (context-specific – use with care)",
     "Result (use for returned data from a function or query)"
   ],
   "relationships": [
-    "Data isGeneratedBy N-able, MSP, Device, Script, or Integration",
+    "Data isGeneratedBy Vendor, MSP, Device, Script, or Integration",
     "Data isStoredIn Repository or Platform",
     "Data isConsumedBy Agent or Automation or Policy",
     "Data isTaggedWith Type (e.g., metric, alert, configuration)",
-    "Data belongsTo N-able or MSP or Tenant or Site"
+    "Data belongsTo Vendor or MSP or Tenant or Site"
   ],
   "prompt_examples": [
-    "INCORRECT: Get all data for this tenant.",
-    "CORRECT: Get performance metrics and alert logs for this tenant.",
-    "INCORRECT: Analyze the data for policy violations.",
-    "CORRECT: Analyze event logs and compliance reports for policy violations.",
-    "CORRECT: Retrieve CPU and memory usage data for device ‘ENG-LT-05’ for the past 7 days."
+    "Get performance metrics and alert logs for this tenant.",
+    "Analyze event logs and compliance reports for policy violations.",
+    "Retrieve CPU and memory usage data for device ‘ENG-LT-05’ for the past 7 days."
   ],
   "agent_execution": {
     "interpretation": "When “Data” is used in a prompt, the AI agent will:",
@@ -548,7 +540,7 @@
  {
   "id": "CAT-MIP-08072025-000000131",
   "canonical_term": "Disk",
-  "definition": "A Disk is a physical or virtual storage component used by a device to persist data. Disks can be hard drives (HDD), solid-state drives (SSD), or virtual volumes (e.g., VHDs in cloud environments). In the N-able context, disk information is collected for monitoring storage capacity, performance, health, and lifecycle. Disks may be local (installed on a device) or network-attached, and are critical for system stability and application functionality.",
+  "definition": "A Disk is a physical or virtual storage component used by a device to persist data. Disks can be hard drives (HDD), solid-state drives (SSD), or virtual volumes (e.g., VHDs in cloud environments). Disk information is collected for monitoring storage capacity, performance, health, and lifecycle. Disks may be local (installed on a device) or network-attached, and are critical for system stability and application functionality.",
   "synonyms": [
     "Drive",
     "Storage Device",
@@ -591,7 +583,7 @@
   {
   "id": "CAT-MIP-08072025-000000141",
   "canonical_term": "Distributor",
-  "definition": "A Distributor is an organization authorized by N-able to resell N-able products and services. Distributors may operate under their own branding, manage multiple MSPs or sub-distributors, and may either directly support their downstream entities or rely on N-able for support. Distributors typically have visibility and limited control over the environments of their managed MSPs.",
+  "definition": "A Distributor is an organization authorized to resell vendor products and services. Distributors may operate under their own branding, manage multiple MSPs or sub-distributors, and may either directly support their downstream entities or rely on vendor for support. Distributors typically have visibility and limited control over the environments of their managed MSPs.",
   "synonyms": [
     "Partner (ambiguous – avoid unless context is clear)",
     "Channel Partner",
@@ -603,19 +595,19 @@
     "Distributor supports MSP",
     "Distributor manages SubDistributor",
     "Distributor has Visibility into Tenant",
-    "Distributor follows PolicyTemplate from N-able",
-    "Distributor isManagedBy N-able"
+    "Distributor follows PolicyTemplate from vendor",
+    "Distributor isManagedBy vendor"
   ],
   "prompt_examples": [
     "List all MSPs under the distributor ‘AlphaTech’.",
-    "Does the distributor ‘EuroSecure’ manage support for its MSPs or is it handled by N-able?",
+    "Does the distributor ‘EuroSecure’ manage support for its MSPs or is it handled by vendor?",
     "Deploy the onboarding script to all new tenants under the distributor ‘CloudBridge’."
   ],
   "agent_execution": {
-    "interpretation": "When the term “Distributor” is used, the agent interprets the request as applying to an intermediary layer between N-able and one or more MSPs. The agent will:",
+    "interpretation": "When the term “Distributor” is used, the agent interprets the request as applying to an intermediary layer between vendor and one or more MSPs. The agent will:",
     "actions": [
       "Query the organizational hierarchy to identify associated MSPs or tenants",
-      "Check configuration settings to determine whether the Distributor or N-able owns support responsibilities",
+      "Check configuration settings to determine whether the Distributor or vendor owns support responsibilities",
       "Determine available product sets, policies, or automation workflows that the Distributor can access or propagate",
       "Restrict or allow actions based on permissions assigned at the Distributor level"
     ]
@@ -676,7 +668,7 @@
 {
   "id": "CAT-MIP-08072025-000000161",
   "canonical_term": "ExternalVendor",
-  "definition": "An External Vendor is a third-party company that provides software, hardware, or services which integrate with N-able products. These vendors are typically integration partners and may offer functionality in areas such as security, backup, PSA (Professional Services Automation), billing, remote access, or threat detection. External Vendors participate in the N-able ecosystem by exposing APIs, actions, or event streams that can be called by or respond to AI Agents, scripts, and workflows.",
+  "definition": "An External Vendor is a third-party company that provides software, hardware, or services which integrate with vendor products. These vendors are typically integration partners and may offer functionality in areas such as security, backup, PSA (Professional Services Automation), billing, remote access, or threat detection. External Vendors participate in the vendor ecosystem by exposing APIs, actions, or event streams that can be called by or respond to AI Agents, scripts, and workflows.",
   "synonyms": [
     "Vendor",
     "Integration Partner",
@@ -687,7 +679,7 @@
     "ExternalVendor provides Integration",
     "ExternalVendor owns ExternalSystem",
     "ExternalVendor supports Action",
-    "ExternalVendor mayBeCertifiedBy N-able",
+    "ExternalVendor mayBeCertifiedBy vendor",
     "ExternalVendor collaboratesWith MSP",
     "ExternalVendor integratesWith Product"
   ],
@@ -699,7 +691,7 @@
   "agent_execution": {
     "interpretation": "When a prompt includes the name of an External Vendor, the agent will:",
     "actions": [
-      "Search the N-able Integration Registry for known vendors",
+      "Search the vendor Integration Registry for known vendors",
       "Retrieve associated integrations, available actions, and certified products",
       "Determine integration status (enabled, not installed, in error) for the current MSP or Tenant",
       "Route API calls or automation flows to the appropriate external system, respecting authentication and permission boundaries",
@@ -761,7 +753,7 @@
  {
   "id": "CAT-MIP-08072025-000000181",
   "canonical_term": "File",
-  "definition": "A File is a discrete unit of digital data stored on a device or in the cloud. Files can represent executables, documents, logs, scripts, configurations, or any other form of structured or unstructured content. In the N-able context, files may be transferred, monitored, scanned for threats, or used as part of automation workflows. Files exist within file systems, storage volumes, or cloud containers, and may be associated with software, devices, or users.",
+  "definition": "A File is a discrete unit of digital data stored on a device or in the cloud. Files can represent executables, documents, logs, scripts, configurations, or any other form of structured or unstructured content. In the vendor context, files may be transferred, monitored, scanned for threats, or used as part of automation workflows. Files exist within file systems, storage volumes, or cloud containers, and may be associated with software, devices, or users.",
   "synonyms": [
     "Document (when referring to user-generated content)",
     "Artifact (in deployment or CI/CD contexts)",
@@ -803,7 +795,7 @@
  {
   "id": "CAT-MIP-08072025-000000191",
   "canonical_term": "Hardware",
-  "definition": "Hardware refers to the physical components of an IT environment, including servers, laptops, desktops, networking gear, storage devices, and peripherals. In the N-able context, hardware is typically associated with managed Devices, and its properties (e.g., CPU type, RAM, disk size, serial number) are collected for inventory, health monitoring, and compliance tracking. Hardware may also include embedded systems and edge devices under MSP management.",
+  "definition": "Hardware refers to the physical components of an IT environment, including servers, laptops, desktops, networking gear, storage devices, and peripherals. In the vendor context, hardware is typically associated with managed Devices, and its properties (e.g., CPU type, RAM, disk size, serial number) are collected for inventory, health monitoring, and compliance tracking. Hardware may also include embedded systems and edge devices under MSP management.",
   "synonyms": [
     "Physical Asset",
     "Equipment",
@@ -846,7 +838,7 @@
  {
   "id": "CAT-MIP-08072025-000000201",
   "canonical_term": "Integration",
-  "definition": "An Integration is a defined connection between an external vendor’s product or service and one or more N-able products. Integrations allow data exchange, automation, event handling, and workflow coordination across systems. They may be developed by N-able, by the external vendor, or by a partner, and can vary in complexity from simple scripts and API calls to deeply embedded multi-function toolsets.",
+  "definition": "An Integration is a defined connection between an external vendor’s product or service and one or more vendor products. Integrations allow data exchange, automation, event handling, and workflow coordination across systems. They may be developed by vendor, by the external vendor, or by a partner, and can vary in complexity from simple scripts and API calls to deeply embedded multi-function toolsets.",
   "synonyms": [
     "Plugin (legacy or context-specific)",
     "Extension",
@@ -855,9 +847,9 @@
   "relationships": [
     "Integration connects External Vendor to Product",
     "Integration exposes Action",
-    "Integration calls N-able Action",
+    "Integration calls vendor Action",
     "Integration consumes Data or Event from External Vendor",
-    "Integration mayBeManagedBy N-able | Vendor | Partner"
+    "Integration mayBeManagedBy vendor | Vendor | Partner"
   ],
   "prompt_examples": [
     "What integrations are available for ticketing systems like Autotask and ConnectWise?",
@@ -867,7 +859,7 @@
   "agent_execution": {
     "interpretation": "When a prompt refers to an “Integration,” the agent will:",
     "actions": [
-      "Identify the integration metadata from the N-able Integration Catalog",
+      "Identify the integration metadata from the vendor Integration Catalog",
       "Resolve the associated products, available actions, and required permissions",
       "Determine whether the integration is installed, active, or requires onboarding",
       "Enable or invoke integration-specific functionality, such as data syncs, policy mappings, or scripted triggers",
@@ -971,7 +963,7 @@
 {
   "id": "CAT-MIP-08072025-000000231",
   "canonical_term": "License",
-  "definition": "A License is a contractual or system-enforced right to use a product, service, or feature within defined terms (e.g., time, scope, seats, capabilities). In the MSP and N-able context, licenses are required for using specific N-able products (e.g., N-central, Cove) or features (e.g., Take Control, advanced reporting). Licenses may apply at the tenant, device, or user level and are tracked to ensure compliance, billing accuracy, and feature access.",
+  "definition": "A License is a contractual or system-enforced right to use a product, service, or feature within defined terms (e.g., time, scope, seats, capabilities). In the MSP and vendor context, licenses are required for using specific vendor products (e.g., N-central, Cove) or features (e.g., Take Control, advanced reporting). Licenses may apply at the tenant, device, or user level and are tracked to ensure compliance, billing accuracy, and feature access.",
   "synonyms": [
     "Subscription (context-dependent — more common in SaaS)",
     "Entitlement",
@@ -1146,7 +1138,7 @@
 {
   "id": "CAT-MIP-08072025-000000271",
   "canonical_term": "MSP",
-  "definition": "An MSP (Managed Service Provider) is a type of Partner responsible for delivering IT services to one or more customer environments (tenants). MSPs use N-able products to monitor, manage, secure, and automate infrastructure for their clients. They typically own the relationship with the end customer, administer devices, apply policies, run scripts, and handle service tickets.",
+  "definition": "An MSP (Managed Service Provider) is a type of Partner responsible for delivering IT services to one or more customer environments (tenants). MSPs use vendor products to monitor, manage, secure, and automate infrastructure for their clients. They typically own the relationship with the end customer, administer devices, apply policies, run scripts, and handle service tickets.",
   "synonyms": [
     "Partner (when the context is service delivery)",
     "Service Provider",
@@ -1158,8 +1150,8 @@
     "MSP owns Asset | Device",
     "MSP applies Policy",
     "MSP runs Script",
-    "MSP isProvisionedBy Distributor or N-able",
-    "MSP isSupportedBy N-able or Distributor",
+    "MSP isProvisionedBy Distributor or vendor",
+    "MSP isSupportedBy vendor or Distributor",
     "MSP provides Service to End Customer",
     "MSP has AccessControl for Agent"
   ],
@@ -1190,35 +1182,35 @@
 ,
 {
   "id": "CAT-MIP-08072025-000000281",
-  "canonical_term": "N-able",
-  "definition": "The top-level platform node representing N-able as the vendor and service provider. This is a unique, singular entity in the model. It serves as the source of platform-wide policies, agent frameworks, product definitions, and integration standards. All tenants, services, and tools exist beneath or are associated with this node.",
+  "canonical_term": "vendor",
+  "definition": "The top-level platform node representing vendor as the vendor and service provider. This is a unique, singular entity in the model. It serves as the source of platform-wide policies, agent frameworks, product definitions, and integration standards. All tenants, services, and tools exist beneath or are associated with this node.",
   "synonyms": [
     "Platform",
     "Vendor",
-    "Parent org (avoid — use N-able)",
+    "Parent org (avoid — use vendor)",
     "Global provider (context-dependent)"
   ],
   "relationships": [
-    "N-able provides Product",
-    "N-able defines Terminology Standard",
-    "N-able publishes Template",
-    "N-able manages Partner",
-    "N-able supports Partner",
-    "N-able manages Distributor",
-    "N-able owns AI Agent Framework"
+    "vendor provides Product",
+    "vendor defines Terminology Standard",
+    "vendor publishes Template",
+    "vendor manages Partner",
+    "vendor supports Partner",
+    "vendor manages Distributor",
+    "vendor owns AI Agent Framework"
   ],
   "prompt_examples": [
-    "What monitoring tools does N-able provide for remote access?",
-    "Does N-able have a default patching policy template?",
-    "List all automation policies published by N-able."
+    "What monitoring tools does vendor provide for remote access?",
+    "Does vendor have a default patching policy template?",
+    "List all automation policies published by vendor."
   ],
   "agent_execution": {
-    "interpretation": "When the term “N-able” is used in a prompt, the agent interprets it as a query against global or platform-wide definitions that originate from the N-able platform node. The agent resolves requests by:",
+    "interpretation": "When the term “vendor” is used in a prompt, the agent interprets it as a query against global or platform-wide definitions that originate from the vendor platform node. The agent resolves requests by:",
     "actions": [
-      "Accessing the centralized N-able catalog of tools, templates, and product definitions",
+      "Accessing the centralized vendor catalog of tools, templates, and product definitions",
       "Filtering results not tied to any specific tenant or MSP configuration",
       "Returning default (global) policies, tools, scripts, or documentation",
-      "Providing N-able-wide metadata rather than tenant-specific data"
+      "Providing vendor-wide metadata rather than tenant-specific data"
     ]
   },
   "metadata": {
@@ -1234,7 +1226,7 @@
  {
   "id": "CAT-MIP-08072025-000000291",
   "canonical_term": "Network",
-  "definition": "A Network is a collection of interconnected devices, systems, and services that communicate using standard protocols. In the DevOps Infrastructure Ontology, it includes both physical infrastructure (e.g., routers, switches, cabling) and logical constructs (e.g., IP subnets, VLANs, virtual networks). In the MSP and N-able context, networks are monitored for availability, performance, security, and connectivity, often segmented by customer, site, or service.",
+  "definition": "A Network is a collection of interconnected devices, systems, and services that communicate using standard protocols. In the DevOps Infrastructure Ontology, it includes both physical infrastructure (e.g., routers, switches, cabling) and logical constructs (e.g., IP subnets, VLANs, virtual networks). In the MSP and vendor context, networks are monitored for availability, performance, security, and connectivity, often segmented by customer, site, or service.",
   "synonyms": [
     "LAN / WAN (context-specific — use when defining scope)",
     "Segment",
@@ -1407,7 +1399,7 @@
 {
   "id": "CAT-MIP-08072025-000000331",
   "canonical_term": "Organization",
-  "definition": "This term should probably be avoided due to ambiguity. An Organization is a general-purpose container representing any structured business or entity within the N-able ecosystem. It may refer to a Distributor, MSP, Tenant, or even N-able itself, depending on context. “Organization” is primarily used in internal models, system hierarchies, or data structures to abstract the roles of different actors in the platform. In end-user contexts, the more specific terms (MSP, Tenant, etc.) are preferred.",
+  "definition": "This term should probably be avoided due to ambiguity. An Organization is a general-purpose container representing any structured business or entity within the vendor ecosystem. It may refer to a Distributor, MSP, Tenant, or even vendor itself, depending on context. “Organization” is primarily used in internal models, system hierarchies, or data structures to abstract the roles of different actors in the platform. In end-user contexts, the more specific terms (MSP, Tenant, etc.) are preferred.",
   "synonyms": [
     "Org (internal shorthand)",
     "Business Unit (when referring to internal structures)",
@@ -1415,7 +1407,7 @@
     "Account (ambiguous – avoid unless referring to billing)"
   ],
   "relationships": [
-    "Organization mayBe N-able | Vendor | Distributor | MSP | Tenant",
+    "Organization mayBe vendor | Vendor | Distributor | MSP | Tenant",
     "Organization has SubOrganization",
     "Organization manages Users",
     "Organization owns Devices | Assets",
@@ -1430,7 +1422,7 @@
   "agent_execution": {
     "interpretation": "When a prompt refers to an “Organization,” the agent interprets it as a flexible node in the hierarchy. It resolves the entity’s role based on its metadata:",
     "actions": [
-      "If it’s at the top of the hierarchy with publishing rights → N-able",
+      "If it’s at the top of the hierarchy with publishing rights → vendor",
       "If it resells to others → Distributor",
       "If it delivers services → MSP",
       "If it receives services → Tenant"
@@ -1536,7 +1528,7 @@
 {
   "id": "CAT-MIP-08072025-000000334",
   "canonical_term": "Performance",
-  "definition": "Performance refers to the operational efficiency and responsiveness of a system, device, or application. It is typically measured through metrics such as CPU usage, memory consumption, disk I/O, network throughput, and latency. In the MSP and N-able context, performance is used to assess the health of devices, detect bottlenecks, and determine whether systems are operating within acceptable thresholds.",
+  "definition": "Performance refers to the operational efficiency and responsiveness of a system, device, or application. It is typically measured through metrics such as CPU usage, memory consumption, disk I/O, network throughput, and latency. In the MSP and vendor context, performance is used to assess the health of devices, detect bottlenecks, and determine whether systems are operating within acceptable thresholds.",
   "synonyms": [
     "System Health (ambiguous – use when referring to overall status)",
     "Responsiveness (context-specific – use when referring to end-user experience)",
@@ -1707,7 +1699,7 @@
 {
   "id": "CAT-MIP-08072025-000000338",
   "canonical_term": "Report",
-  "definition": "A Report is a structured output that presents data collected from systems, policies, or agents over a defined time period. Reports are used for analysis, auditing, compliance, customer communication, or internal performance tracking. In the MSP and N-able context, reports may include information on device health, backup status, patch compliance, license usage, or automation outcomes. Reports can be generated on demand or scheduled, and may be exported in formats such as PDF, CSV, or JSON.",
+  "definition": "A Report is a structured output that presents data collected from systems, policies, or agents over a defined time period. Reports are used for analysis, auditing, compliance, customer communication, or internal performance tracking. In the MSP and vendor context, reports may include information on device health, backup status, patch compliance, license usage, or automation outcomes. Reports can be generated on demand or scheduled, and may be exported in formats such as PDF, CSV, or JSON.",
   "synonyms": [
     "Summary",
     "Export",
@@ -1748,7 +1740,7 @@
 {
   "id": "CAT-MIP-08072025-000000339",
   "canonical_term": "Resource",
-  "definition": "A Resource is a general term that refers to any manageable object within the N-able ecosystem. This includes physical or virtual components such as devices, users, software, network elements, storage, and compute instances. In internal models (and in the DevOps Infrastructure Ontology), “Resource” is often used as an abstract class or grouping term for things that can be monitored, configured, automated, or queried. It is not recommended for use in AI prompts due to its vagueness.",
+  "definition": "A Resource is a general term that refers to any manageable object within the vendor ecosystem. This includes physical or virtual components such as devices, users, software, network elements, storage, and compute instances. In internal models (and in the DevOps Infrastructure Ontology), “Resource” is often used as an abstract class or grouping term for things that can be monitored, configured, automated, or queried. It is not recommended for use in AI prompts due to its vagueness.",
   "synonyms": [
     "Asset",
     "Object",
@@ -1762,10 +1754,8 @@
     "Resource isTaggedWith Label or Category"
   ],
   "prompt_examples": [
-    "INCORRECT: “Check the health of all resources in the customer ‘Brightline’.”",
-    "CORRECT: “Check the health of all devices in the customer ‘Brightline’.”",
-    "INCORRECT: “What resources are consuming the most bandwidth?”",
-    "CORRECT: “What devices or servers are consuming the most bandwidth?”"
+    "Check the health of all devices in the customer ‘Brightline’.",
+    "What devices or servers are consuming the most bandwidth?"
   ],
   "agent_execution": {
     "interpretation": "When the term “Resource” is used, the agent:",
@@ -1890,7 +1880,6 @@
   "relationships": [
     "Script isExecutedOn Device or CloudResource",
     "Script isTriggeredBy Event or Schedule",
-    "Script isOwnedBy MSP or N-able",
     "Script isPartOf AutomationPolicy or Workflow",
     "Script produces OutputData or modifies Configuration"
   ],
@@ -2272,7 +2261,7 @@
 {
   "id": "CAT-MIP-08072025-000000360",
   "canonical_term": "Storage",
-  "definition": "Storage refers to the physical or virtual infrastructure used to persist data, including backups, logs, software, configurations, and operating system files. In the MSP and N-able context, storage may include local disk drives, network-attached storage (NAS), cloud storage services (e.g., AWS S3), or specialized backup storage vaults. Storage is a critical resource that supports data retention, recovery, and compliance.",
+  "definition": "Storage refers to the physical or virtual infrastructure used to persist data, including backups, logs, software, configurations, and operating system files. In the MSP and vendor context, storage may include local disk drives, network-attached storage (NAS), cloud storage services (e.g., AWS S3), or specialized backup storage vaults. Storage is a critical resource that supports data retention, recovery, and compliance.",
   "synonyms": [
     "Storage Device",
     "Storage Vault",
@@ -2448,7 +2437,7 @@
 {
   "id": "CAT-MIP-08072025-000000364",
   "canonical_term": "Template",
-  "definition": "A Template is a reusable configuration object that defines a set of settings, rules, or characteristics to be applied to one or more assets, such as devices, scripts, users, or policies. Templates are commonly used to enforce consistency across environments and to streamline the deployment of standardized configurations. In N-able products, templates may be used for onboarding, automation, security settings, or monitoring configurations.",
+  "definition": "A Template is a reusable configuration object that defines a set of settings, rules, or characteristics to be applied to one or more assets, such as devices, scripts, users, or policies. Templates are commonly used to enforce consistency across environments and to streamline the deployment of standardized configurations. In vendor products, templates may be used for onboarding, automation, security settings, or monitoring configurations.",
   "synonyms": [
     "Profile",
     "Blueprint",
@@ -2458,7 +2447,7 @@
   "relationships": [
     "Template appliesTo Device",
     "Template defines Settings",
-    "Template isOwnedBy MSP or N-able",
+    "Template isOwnedBy MSP or vendor",
     "Template mayBeAssignedTo Site or Tenant",
     "Template isBasedOn Policy or Script"
   ],
@@ -2580,7 +2569,7 @@
 {
   "id": "CAT-MIP-08072025-000000367",
   "canonical_term": "User",
-  "definition": "A User is an individual identity that interacts with or is managed by the ecosystem. The term User may refer to two distinct but related concepts. In the DevOps Infrastructure Ontology, a User is typically a human actor who interacts with resources and services, often through a UI, command line, or API. A user may represent different roles depending on the context, including an MSP administrator, IT technician, end user (someone logging into a managed device), or N-able support personnel. A user may also be a leaf node representing a person managed as part of a customer environment. Users can be associated with specific tenants, organizations, roles, or permissions, and their activities may be logged, audited, and constrained by policies. It is not recommended to use the term User without additional context.",
+  "definition": "A User is an individual identity that interacts with or is managed by the ecosystem. The term User may refer to two distinct but related concepts. In the DevOps Infrastructure Ontology, a User is typically a human actor who interacts with resources and services, often through a UI, command line, or API. A user may represent different roles depending on the context, including an MSP administrator, IT technician, end user (someone logging into a managed device), or vendor support personnel. A user may also be a leaf node representing a person managed as part of a customer environment. Users can be associated with specific tenants, organizations, roles, or permissions, and their activities may be logged, audited, and constrained by policies. It is not recommended to use the term User without additional context.",
   "synonyms": [
     "Admin",
     "Technician",
@@ -2608,7 +2597,7 @@
       "Look up associated permissions, roles, tenant ownership, and login history",
       "Take actions such as listing access, modifying roles, disabling users, or flagging suspicious activity",
       "Use multi-tenant scoping rules to ensure actions are authorized and logged appropriately",
-      "Disambiguate prompts like “user logged into the asset” vs. “user with N-able product access”"
+      "Disambiguate prompts like “user logged into the asset” vs. “user with vendor product access”"
     ]
   },
   "recommendation": "Use User with added context specifying role, scope, or identity type to avoid ambiguity.",
