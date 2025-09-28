@@ -16,6 +16,13 @@ from reportlab.pdfbase.pdfmetrics import stringWidth
 # ---------- Styles ----------
 styles = getSampleStyleSheet()
 styles.add(ParagraphStyle(
+    name="CoverTitle", parent=styles["Title"], fontSize=22, alignment=1,  # 0=left, 1=center, 2=right, 4=justify
+    spaceAfter=20
+))
+styles.add(ParagraphStyle(
+    name="CoverDate", parent=styles["Normal"], fontSize=12, alignment=1, textColor=colors.grey
+))
+styles.add(ParagraphStyle(
     name="TitleTerm", parent=styles["Title"], fontSize=14, spaceAfter=6
 ))
 styles.add(ParagraphStyle(
@@ -46,6 +53,19 @@ PAGE_W, PAGE_H = LETTER
 MARGIN = 0.5 * inch
 
 # ---------- Helpers ----------
+
+def build_cover_story():
+    story = []
+    today = datetime.utcnow().strftime("%B %d, %Y")
+    title = "Consortium for AI Terminology for MSPs & IT Pros (CAT-MIP)"
+    # Spacer pushes content down ~half the page
+    story.append(Spacer(1, PAGE_H/3))
+    story.append(Paragraph(title, styles["CoverTitle"]))
+    story.append(Spacer(1, 0.25*inch))
+    story.append(Paragraph(f"Generated on {today}", styles["CoverDate"]))
+    story.append(PageBreak())
+    return story
+
 def _p(text, style="Body"):
     if text is None:
         text = ""
@@ -214,6 +234,10 @@ def render_to_pdf(data, out_path, split_items=False):
                                 pagesize=LETTER, leftMargin=MARGIN, rightMargin=MARGIN,
                                 topMargin=MARGIN, bottomMargin=MARGIN)
         story = []
+         # Add cover page first
+        story.extend(build_cover_story())
+
+        # Then add terms
         if isinstance(data, list):
             for i, item in enumerate(data):
                 story.extend(build_term_story(item if isinstance(item, dict) else {"value": item}))
