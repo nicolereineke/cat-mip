@@ -1,4 +1,6 @@
-# cat-mip
+# cat-mip  DEPRECATED REPO - PLEASE UTILIZE PUBLIC REPO AT: https://github.com/cat-mip/cat-mip
+
+
 Consortium for AI Terminology for MSPs &amp; IT Pros (CAT-MIP)
 
 Mission Statement: To define a shared vocabulary for AI Agents operating across MSP and IT Pro platforms to ensure interoperability, transparency, and reliability.
